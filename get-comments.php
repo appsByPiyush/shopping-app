@@ -20,10 +20,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $row = mysqli_fetch_all($sql, MYSQLI_ASSOC);
     //echo print_r($row);
     if(count($row)> 0){
-            $response["message"] = "Comments found"; 
-            $response["status"] = "200"; 
-            $response["data"] = $row; 
-            echo json_encode($response);
+        $response_new = array();
+        foreach($row as $id => $data){
+            $id= $data['id'];
+            $select= "select name from users where id='$id'";
+            $sql = mysqli_query($conn,$select);
+            $userDetails = mysqli_fetch_assoc($sql);
+            $data["Username"] = $userDetails['name'];
+            //echo print_r($data);
+            $response_new[] = $data;
+        }
+        $response["message"] = "Comments found"; 
+        $response["status"] = "200"; 
+        $response["data"] = $response_new; 
+        echo json_encode($response);
     } else {
         $response["status"] = "400"; 
         $response["message"] = "No Comments Found"; 

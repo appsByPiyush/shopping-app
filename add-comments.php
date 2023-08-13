@@ -28,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_POST["description"];
     $rating = $_POST["rating"];
     $target_file = null;
-    if($_FILES['size'] > 0){
-        echo print_r($_FILES);
+    if($_FILES["file"]['size'] > 0){
+        //echo print_r($_FILES);
         $newFileName = time()."-".$_FILES["file"]["name"];
         //echo($target_file);
         move_uploaded_file($_FILES["file"]["tmp_name"], "images/" . $newFileName);

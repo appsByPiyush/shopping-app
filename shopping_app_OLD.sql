@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2023 at 04:33 PM
+-- Generation Time: Aug 13, 2023 at 10:34 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,10 +45,10 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `product_id`, `user_id`, `title`, `description`, `rating`, `imagelink`, `created`, `updated`, `deleted`) VALUES
-(1, 1, 2, 'Nice Product ', 'Nice Product', 3.5, 'demo-image.jpg', '2023-08-12 17:57:04', NULL, NULL),
-(2, 1, 2, 'Nice Product ', 'Nice Product', 3.5, 'demo-image.jpg', '2023-08-12 17:57:24', NULL, NULL),
-(3, 1, 2, 'Nice Product ', 'Nice Product', 3.5, 'demo-image.jpg', '2023-08-13 12:32:45', NULL, NULL),
-(4, 1, 2, 'Nice Product ', 'Nice Product', 3.5, 'demo-image.jpg', '2023-08-13 12:34:18', NULL, NULL);
+(1, 1, 2, 'Nice Product ', 'Nice Product', 3.5, '1691843224-photo-1587053522141-7baa3a8ce67a.jpg', '2023-08-12 17:57:04', NULL, NULL),
+(2, 1, 2, 'Nice Product ', 'Nice Product', 3.5, '1691843244-photo-1587053522141-7baa3a8ce67a.jpg', '2023-08-12 17:57:24', NULL, NULL),
+(3, 1, 2, 'Nice Product ', 'Nice Product', 3.5, '', '2023-08-13 12:32:45', NULL, NULL),
+(4, 1, 2, 'Nice Product ', 'Nice Product', 3.5, '1691910258-', '2023-08-13 12:34:18', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -77,9 +77,8 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` text DEFAULT NULL,
-  `image` varchar(500) NOT NULL,
+  `link` varchar(500) NOT NULL,
   `price` float NOT NULL,
-  `rating` float NOT NULL,
   `quantity` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime DEFAULT NULL,
@@ -90,14 +89,9 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `image`, `price`, `rating`, `quantity`, `created`, `updated`, `deleted`) VALUES
-(1, 'Table', 'Best table', 'demo-image.jpg', 400, 3.9, 520, '2023-08-11 01:40:13', '2023-08-13 13:58:43', NULL),
-(2, 'Chair', 'Best chair', 'demo-image.jpg', 399, 3.9, 500, '2023-08-10 22:17:57', NULL, NULL),
-(3, '1', '2', 'demo-image.jpg', 0, 3.9, 4, '0000-00-00 00:00:00', NULL, NULL),
-(4, '1', '2', 'demo-image.jpg', 0, 3.9, 4, '0000-00-00 00:00:00', NULL, NULL),
-(5, '1', '2', 'demo-image.jpg', 0, 3.9, 4, '0000-00-00 00:00:00', NULL, NULL),
-(6, 'Hello', 'Nice', 'demo-image.jpg', 1000, 3.5, 10000, '0000-00-00 00:00:00', NULL, NULL),
-(7, 'Hello', 'Nice', 'demo-image.jpg', 1000, 3.5, 10000, '2023-08-13 19:57:02', NULL, NULL);
+INSERT INTO `products` (`id`, `name`, `description`, `link`, `price`, `quantity`, `created`, `updated`, `deleted`) VALUES
+(1, 'Table', 'Best table', '123', 400, 520, '2023-08-11 01:40:13', '2023-08-13 13:58:43', NULL),
+(2, 'Chair', 'Best chair', '123', 399, 500, '2023-08-10 22:17:57', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -186,7 +180,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

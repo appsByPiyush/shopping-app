@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "4ea63f83-37f5-41d3-aea3-0811549320ad",
+		"name": "ShoppingApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28493669"
+	},
+	"item": [
+		{
+			"name": "show products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{host}}/products.php",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add / Edit Users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "piyush@mailer.com1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1232",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Piyush Admin",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "9876543210",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "123, Udaipur",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/add-users.php",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"add-users.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "u_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "currentPassword",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "newPassword",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/update-password",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"update-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "p_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "u_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Nice Product ",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Nice Product",
+							"type": "text"
+						},
+						{
+							"key": "rating",
+							"value": "3.5",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/add-comments.php",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"add-comments.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Comments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "p_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/get-comments.php",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"get-comments.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "piyush@mailer.com1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1232",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/login.php",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"login.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/users.php",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"users.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add orders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "u_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "p_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "480",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "150",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/add-order.php",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"add-order.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recent orders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "u_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/recent-orders.php",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"recent-orders.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -7,7 +7,7 @@ $email = $password = $address = $name = $phone = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $isOldUser = isset($_POST["user_id"])? true : false;
+    $isOldUser = isset($_POST["u_id"])? true : false;
     if(trim($_POST['name']) < 0 || is_null($_POST['name'])){
         $response['status'] = 400;
         $response['message'] = 'Name is missing';
@@ -31,13 +31,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $phone = $_POST['phone'];
     $address = $_POST['address'];
     if($isOldUser){
-        if(trim($_POST['user_id']) < 0 || is_null($_POST['user_id']) ){
+        if(trim($_POST['u_id']) < 0 || is_null($_POST['u_id']) ){
             $response['status'] = 400;
             $response['message'] = 'User Id is missing';
             echo json_encode($response);
             exit();
         }
-        $id = $_POST['user_id'];
+        $id = $_POST['u_id'];
         $select= "select * from users where id='$id'";
         $sql = mysqli_query($conn,$select);
         $row = mysqli_fetch_assoc($sql);

@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $select= "select password from users where id='$id'";
     $sql = mysqli_query($conn,$select);
     $row = mysqli_fetch_assoc($sql);
-    if(count($row) > 0){
+    if(count($row) < 0){
         $response['status'] = 400;
         $response['message'] = "User not found";
         echo json_encode($response);
@@ -49,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             exit();
         }
         if($sql2){
-            $response['status'] = 400;
+            $response['status'] = 200;
             $response['message'] = 'Password updated successfully';
             echo json_encode($response); 
         } else{

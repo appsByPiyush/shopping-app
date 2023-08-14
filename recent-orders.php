@@ -7,6 +7,7 @@ $u_id = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $response_new = array();
     //$isOldUser = isset($_POST["user_id"])? true : false;
     if(trim($_POST['u_id']) < 0 || is_null($_POST['u_id'])){
         $response['status'] = 400;
@@ -20,10 +21,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $row = mysqli_fetch_all($sql, MYSQLI_ASSOC);
     //echo print_r($row);
     if(count($row)> 0){
-            $response["message"] = "Orders found"; 
-            $response["status"] = "200"; 
-            $response["data"] = $row; 
-            echo json_encode($response);
+        foreach($row as $id => $data){
+            //echo print_r($data);
+            $id= $data['product_id'];
+            $select2= "select name, description, image from products where id='$id'";
+            $sql = mysqli_query($conn,$select2);
+            $productDetails = mysqli_fetch_assoc($sql);
+            $data["productDetails"] = $productDetails;
+            //echo print_r($data);
+            $response_new[] = $data;
+        }
+        $response["message"] = "Orders found"; 
+        $response["status"] = "200"; 
+        $response["data"] = $row; 
+        echo json_encode($response_new);
     } else {
         $response["status"] = "400"; 
         $response["message"] = "No Orders Found"; 

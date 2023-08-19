@@ -46,6 +46,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $update = "update users set email='$email',name='$name',phone='$phone',address='$address', updated=now() where id='$id'";
             try {
                 $sql2=mysqli_query($conn,$update);
+                $select= "select name,email,phone,address,created from users where email='$email'";
+                $FetchData = mysqli_query($conn,$select);
+                $data = mysqli_fetch_assoc($FetchData);
             } catch (\Throwable $th) {
                 $response['status'] = 400;
                 $response['message'] = $th->getMessage();
@@ -70,6 +73,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         VALUES ('$name', '$email','$phone','$password','$address')";  
         try {
             $sql2=mysqli_query($conn,$sql_users);
+            $select= "select name,email,phone,address,created from users where email='$email'";
+            $FetchData = mysqli_query($conn,$select);
+            $data = mysqli_fetch_assoc($FetchData);
         } catch (\Throwable $th) {
             $response['status'] = 400;
             $response['message'] = $th->getMessage();
@@ -80,6 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if($sql2) { 
         $response['status'] = 200;
+        $response['meta'] = json_encode($data);
         $response['message'] = 'Profile created or updated successfully!';
         echo json_encode($response);
     } else {
